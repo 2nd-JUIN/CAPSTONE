@@ -56,7 +56,7 @@ fun MainScreen(navController: NavController) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.aesthetic),
+            painter = painterResource(id = R.drawable.main),
             contentDescription = "Background Image",
             modifier = Modifier.matchParentSize(),
             contentScale = ContentScale.FillBounds
