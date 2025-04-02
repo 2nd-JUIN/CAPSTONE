@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\KillerCHO\\My project window\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2A412845-E598-D02D-5791-4F7B844FCC4E}|Assembly-CSharp.csproj|e:\\killercho\\my project window\\assets\\c#\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A412845-E598-D02D-5791-4F7B844FCC4E}|Assembly-CSharp.csproj|solutionrelative:assets\\c#\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "E:\\KillerCHO\\My project window\\Assets\\C#\\UIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\C#\\UIManager.cs",
+              "ToolTip": "E:\\KillerCHO\\My project window\\Assets\\C#\\UIManager.cs",
+              "RelativeToolTip": "Assets\\C#\\UIManager.cs",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAuwLUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T08:02:17.268Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

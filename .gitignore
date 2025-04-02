@@ -1,0 +1,16 @@
+# Unity 빌드 및 캐시 파일 제외
+Library/
+Logs/
+Temp/
+obj/
+*.csproj
+*.sln
+*.userprefs
+
+# Large File 제외 (GitHub에서 100MB 이상 제한)
+Packages/manifest.json
+Packages/packages-lock.json
+Library/
+Logs/
+Temp/
+Packages/
