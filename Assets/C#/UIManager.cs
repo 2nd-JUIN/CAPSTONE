@@ -26,6 +26,9 @@ public class UIManager : MonoBehaviour
     public TMP_InputField loginInputPW; // 로그인 PW 항목
     public TMP_Text LoginErrorText; // Login 에러 메세지 텍스트
     public GameObject loginSuccessPanel; // 로그인 완료 패널
+    public GameObject signInButton;         // SignBTN (로그인 버튼)
+    public GameObject logoutButton;         // LogoutBTN (로그아웃 버튼)
+    public GameObject logoutSuccessPanel;   // 로그아웃 성공 패널
 
 
 
@@ -120,6 +123,10 @@ public class UIManager : MonoBehaviour
         loginPanel.SetActive(false); // 로그인 패널 닫기
         loginSuccessPanel.SetActive(true); // 로그인 성공 패널 열기
 
+        // 로그인 성공하면 로그아웃 버튼으로 바뀌게 함
+        signInButton.SetActive(false);  // 로그인 버튼 숨기기
+        logoutButton.SetActive(true);   // 로그아웃 버튼 보이기
+
         // 2초 후 자동 닫힘
         StartCoroutine(CloseLoginSuccessAfterDelay());
     }
@@ -129,6 +136,24 @@ public class UIManager : MonoBehaviour
         loginSuccessPanel.SetActive(false);   // 패널 닫기
     }
 
+
+
+
+    // 로그아웃 버튼 클릭 시 실행
+    public void OnLogoutButtonClicked()
+    {
+        logoutButton.SetActive(false);    // 로그아웃 버튼 숨기기
+        signInButton.SetActive(true);      // 로그인 버튼 다시 보이기
+
+        logoutSuccessPanel.SetActive(true); // 로그아웃 성공 패널 띄우기
+
+        StartCoroutine(CloseLogoutSuccessAfterDelay());
+    }
+    private IEnumerator CloseLogoutSuccessAfterDelay()
+    {
+        yield return new WaitForSeconds(2f); // 2초 대기
+        logoutSuccessPanel.SetActive(false); // 패널 닫기
+    }
 
 
 
