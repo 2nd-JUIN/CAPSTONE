@@ -29,7 +29,12 @@ public class UIManager : MonoBehaviour
     public GameObject signInButton;         // SignBTN (로그인 버튼)
     public GameObject logoutButton;         // LogoutBTN (로그아웃 버튼)
     public GameObject logoutSuccessPanel;   // 로그아웃 성공 패널
+    public GameObject[] resultPanels; // 깔끔도 측정 결과 패널 Type1 ~ Type8 (0~7 인덱스)
+    public GameObject surveyErrorPanel; // 문항 누락 경고 패널
 
+
+
+    
 
 
 
@@ -135,6 +140,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(2f); // 2초 딜레이
         loginSuccessPanel.SetActive(false);   // 패널 닫기
     }
+
 
 
 
@@ -298,12 +304,22 @@ public class UIManager : MonoBehaviour
         cleanlinessSurveyConfirmPanel.SetActive(false); // 깔끔도 측정 확인 패널 닫기
     }
 
-    // "예" 버튼 클릭 시 설문 시작
+    // 깔끔도 측정을 진행하시겠습니까? → "예" 버튼 클릭 시 설문 시작.
     public void StartCleanlinessSurvey()
     {
         cleanlinessSurveyConfirmPanel.SetActive(false); // 확인 패널 닫기
         surveyOnePagePanel.SetActive(true); // 첫 번째 설문 페이지 열기
     }
+
+    // 깔끔도 측정 설문 문항 응답을 저장할 배열
+    private bool[] answers = new bool[9]; // 9개의 문항에 대한 응답
+
+    // 각 문항에 대한 버튼들을 연결 (유니티 에디터에서 연결해야 함)
+    public Button[] yesButtons;  // 예 버튼들
+    public Button[] noButtons;   // 아니오 버튼들
+    public Color selectedColor = Color.green;  // 선택된 버튼 색상
+    public Color defaultColor = Color.white;   // 기본 버튼 색상
+
 
     // 설문 페이지 닫기
     public void CloseSurveyPage()
@@ -312,30 +328,6 @@ public class UIManager : MonoBehaviour
         surveyTwoPagePanel.SetActive(false); // 설문 2페이지 닫기
     }
 
-    // 설문 리셋 및 패널 닫기 함수
-    public void OnCloseButtonClicked()
-    {
-        // 응답 배열 초기화 (모든 문항에 대해 '아니오' 응답을 기본값으로 설정)
-        for (int i = 0; i < answers.Length; i++)
-        {
-            answers[i] = false; // 기본값(false)로 초기화
-        }
-
-        // 버튼 색상 초기화
-        for (int i = 0; i < yesButtons.Length; i++)
-        {
-            yesButtons[i].image.color = defaultColor;
-            noButtons[i].image.color = defaultColor;
-        }
-
-        // UI 강제 갱신
-        Canvas.ForceUpdateCanvases();
-
-        // 패널 닫기
-        CloseSurveyPage();
-
-        Debug.Log("닫기 버튼을 통한 설문 리셋 및 패널 닫힘");
-    }
 
     // '다음' 버튼 클릭 시 설문 2페이지로 이동
     public void GoToSurveyTwoPage()
@@ -351,48 +343,94 @@ public class UIManager : MonoBehaviour
         surveyOnePagePanel.SetActive(true); // 설문 1페이지 열기
     }
 
-    // 설문 종료 후 '적용하기' 버튼 클릭 시 처리                                                       << 깔끔도 측정 데이터 DB로 전송하기 위한 코딩은 여기쯤 >>
+    // 설문 종료 후 '적용하기' 버튼 클릭 시 3가지 요소에 대한 9가지 문항의 응답에 따라 Type1 ~ Type8 패널을 띄울 것.
     public void ApplySurveyResults()
     {
+        // 문항 미응답 체크
+        for (int i = 0; i < yesButtons.Length; i++)
+        {
+            if (!yesButtons[i].image.color.Equals(selectedColor) && !noButtons[i].image.color.Equals(selectedColor))
+            {
+                // 문항 응답이 누락되었을 경우 오류 패널 표시
+                surveyErrorPanel.SetActive(true);
+                StartCoroutine(CloseSurveyErrorAfterDelay());
+                return;
+            }
+        }
+
         surveyOnePagePanel.SetActive(false); // 설문 1페이지 닫기
         surveyTwoPagePanel.SetActive(false); // 설문 2페이지 닫기
-        confirmationPanel.SetActive(true); // 확인 메시지 패널 열기
-        StartCoroutine(CloseConfirmationAfterDelay()); // 2초 뒤 닫기
+
+        int accessYes = CountYesAnswers(0, 2);
+        int convenienceYes = CountYesAnswers(3, 5);
+        int visibilityYes = CountYesAnswers(6, 8);
+
+        bool accessO = accessYes >= 2;
+        bool convenienceO = convenienceYes >= 2;
+        bool visibilityO = visibilityYes >= 2;
+
+        int typeIndex = GetTypeIndex(accessO, convenienceO, visibilityO);
+
+        for (int i = 0; i < resultPanels.Length; i++)
+        {
+            resultPanels[i].SetActive(i == typeIndex);
+        }
+
+        Debug.Log($"설문 결과: 접근성 {(accessO ? "O" : "X")}, 편리성 {(convenienceO ? "O" : "X")}, 가시성 {(visibilityO ? "O" : "X")} → Type{typeIndex + 1}");
     }
 
-    // 문항 응답을 저장할 배열
-    private bool[] answers = new bool[9]; // 9개의 문항에 대한 응답
+    // 측정 결과 패널 확인버튼 클릭 시 닫음
+    public void CloseResultPanels()
+    {
+        for (int i = 0; i < resultPanels.Length; i++)
+        {
+            resultPanels[i].SetActive(false);
+        }
+    }
 
-    // 각 문항에 대한 버튼들을 연결 (유니티 에디터에서 연결해야 함)
-    public Button[] yesButtons;  // 예 버튼들
-    public Button[] noButtons;   // 아니오 버튼들
+    // 문항 미응답 시 오류 패널 자동 닫기
+    private IEnumerator CloseSurveyErrorAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        surveyErrorPanel.SetActive(false);
+    }
 
-    public Color selectedColor = Color.green;  // 선택된 버튼 색상
-    public Color defaultColor = Color.white;   // 기본 버튼 색상
+    private int CountYesAnswers(int start, int end)
+    {
+        int count = 0;
+        for (int i = start; i <= end; i++)
+        {
+            if (answers[i]) count++;
+        }
+        return count;
+    }
 
-    // 예 버튼 클릭 시 호출되는 함수
+    private int GetTypeIndex(bool accessO, bool convenienceO, bool visibilityO)
+    {
+        int index = 0;
+        if (accessO) index += 4;
+        if (convenienceO) index += 2;
+        if (visibilityO) index += 1;
+        return index;
+    }
+
+    // 예(Y) 버튼 클릭 시 호출되는 함수
     public void OnYesButtonClicked(int index)
     {
-        answers[index] = true;  // 해당 문항에 '예' 응답 기록
+        answers[index] = true; // 해당 문항에 '예' 응답 기록
 
-        // 시각적 효과 (예 버튼 색상 변경)
         yesButtons[index].image.color = selectedColor;
-
-        // 아니오 버튼 색상 리셋
         noButtons[index].image.color = defaultColor;
 
         Debug.Log("Yes 버튼이 클릭되었습니다. 문항 번호: " + (index + 1));
     }
 
-    // 아니오 버튼 클릭 시 호출되는 함수
+    // 아니오(N) 버튼 클릭 시 호출되는 함수
     public void OnNoButtonClicked(int index)
     {
         answers[index] = false; // 해당 문항에 '아니오' 응답 기록
 
-        // 시각적 효과 (아니오 버튼 색상 변경)
         noButtons[index].image.color = selectedColor;
-
-        // 예 버튼 색상 리셋
         yesButtons[index].image.color = defaultColor;
 
         Debug.Log("No 버튼이 클릭되었습니다. 문항 번호: " + (index + 1));
@@ -401,9 +439,6 @@ public class UIManager : MonoBehaviour
     // Start에서 버튼 클릭 이벤트 연결 (유니티 에디터에서 연결하는 방식으로 대체 가능)
     private void Start()
     {
-        // 반복되는 버튼 연결을 좀 더 간결하게 만들 수 있습니다.
-        // 예 버튼들, 아니오 버튼들에 대해 자동으로 이벤트를 등록하는 방법을 사용할 수 있습니다.
-
         for (int i = 0; i < yesButtons.Length; i++)
         {
             int index = i; // 클로저 문제 방지
