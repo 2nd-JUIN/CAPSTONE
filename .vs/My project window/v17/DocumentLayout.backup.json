@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "E:\\KillerCHO\\My project window\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2A412845-E598-D02D-5791-4F7B844FCC4E}|Assembly-CSharp.csproj|e:\\killercho\\my project window\\assets\\c#\\leaderboardmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A412845-E598-D02D-5791-4F7B844FCC4E}|Assembly-CSharp.csproj|solutionrelative:assets\\c#\\leaderboardmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2A412845-E598-D02D-5791-4F7B844FCC4E}|Assembly-CSharp.csproj|E:\\KillerCHO\\My project window\\assets\\c#\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2A412845-E598-D02D-5791-4F7B844FCC4E}|Assembly-CSharp.csproj|solutionrelative:assets\\c#\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A412845-E598-D02D-5791-4F7B844FCC4E}|Assembly-CSharp.csproj|e:\\killercho\\my project window\\assets\\c#\\guidetextautohide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2A412845-E598-D02D-5791-4F7B844FCC4E}|Assembly-CSharp.csproj|E:\\KillerCHO\\My project window\\assets\\c#\\guidetextautohide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2A412845-E598-D02D-5791-4F7B844FCC4E}|Assembly-CSharp.csproj|solutionrelative:assets\\c#\\guidetextautohide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -46,11 +50,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
+              "Title": "LeaderboardManager.cs",
+              "DocumentMoniker": "E:\\KillerCHO\\My project window\\Assets\\C#\\LeaderboardManager.cs",
+              "RelativeDocumentMoniker": "Assets\\C#\\LeaderboardManager.cs",
+              "ToolTip": "E:\\KillerCHO\\My project window\\Assets\\C#\\LeaderboardManager.cs",
+              "RelativeToolTip": "Assets\\C#\\LeaderboardManager.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAADwvxoAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T12:31:03.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "BackButtonHandler.cs",
               "DocumentMoniker": "E:\\KillerCHO\\My project window\\Assets\\C#\\BackButtonHandler.cs",
               "RelativeDocumentMoniker": "Assets\\C#\\BackButtonHandler.cs",
@@ -61,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "AndroidManifest.xml",
               "DocumentMoniker": "E:\\KillerCHO\\My project window\\Assets\\Plugins\\Android\\AndroidManifest.xml",
               "RelativeDocumentMoniker": "Assets\\Plugins\\Android\\AndroidManifest.xml",
@@ -73,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "MobileCameraFeed.cs",
               "DocumentMoniker": "E:\\KillerCHO\\My project window\\Assets\\C#\\MobileCameraFeed.cs",
               "RelativeDocumentMoniker": "Assets\\C#\\MobileCameraFeed.cs",
@@ -85,20 +102,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UIManager.cs",
               "DocumentMoniker": "E:\\KillerCHO\\My project window\\Assets\\C#\\UIManager.cs",
               "RelativeDocumentMoniker": "Assets\\C#\\UIManager.cs",
               "ToolTip": "E:\\KillerCHO\\My project window\\Assets\\C#\\UIManager.cs",
               "RelativeToolTip": "Assets\\C#\\UIManager.cs",
-              "ViewState": "AgIAAHwBAAAAAAAAAAAgwJQBAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAIcBAAAAAAAAAAAuwEkBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T08:02:17.268Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-25T08:02:17.268Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "UniversalAdditionalCameraData.cs",
               "DocumentMoniker": "E:\\KillerCHO\\My project window\\Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.11\\Runtime\\UniversalAdditionalCameraData.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@14.0.11\\Runtime\\UniversalAdditionalCameraData.cs",
@@ -110,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ScanUIManager.cs",
               "DocumentMoniker": "E:\\KillerCHO\\My project window\\Assets\\C#\\ScanUIManager.cs",
               "RelativeDocumentMoniker": "Assets\\C#\\ScanUIManager.cs",
@@ -122,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ButtonAnimation.cs",
               "DocumentMoniker": "E:\\KillerCHO\\My project window\\Assets\\C#\\ButtonAnimation.cs",
               "RelativeDocumentMoniker": "Assets\\C#\\ButtonAnimation.cs",
@@ -134,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ScreenOrientationSetter.cs",
               "DocumentMoniker": "E:\\KillerCHO\\My project window\\Assets\\C#\\ScreenOrientationSetter.cs",
               "RelativeDocumentMoniker": "Assets\\C#\\ScreenOrientationSetter.cs",
@@ -146,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "GuideTextAutoHide.cs",
               "DocumentMoniker": "E:\\KillerCHO\\My project window\\Assets\\C#\\GuideTextAutoHide.cs",
               "RelativeDocumentMoniker": "Assets\\C#\\GuideTextAutoHide.cs",
@@ -154,8 +170,7 @@
               "RelativeToolTip": "Assets\\C#\\GuideTextAutoHide.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T17:14:04.632Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T17:14:04.632Z"
             }
           ]
         }
